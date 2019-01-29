@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_v.h"
+#include "push_v.h"
+#include "mlx.h"
 
 void			clear_image(t_visu *visu)
 {
@@ -34,7 +35,6 @@ void			render_stack(t_visu *visu, t_stack *a, int x, int y)
 
 	i = 0;
 	rect.height = visu->rect_height;
-	printf("Height: %d\n", visu->rect_height);
 	while (i < a->index)
 	{
 		rect.width = a->arr[i] * visu->rect_width;
@@ -49,7 +49,6 @@ void			render_stacks(t_visu *visu)
 {
 	render_stack(visu, visu->a, 0, 0);
 	render_stack(visu, visu->b, WIDTH / 2, 0);
-	//draw_rect(visu, &((t_rect){200, 500, 500, 200}), 0xFFFFFF);
 	render(visu);
 }
 

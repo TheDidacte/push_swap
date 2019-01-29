@@ -13,25 +13,10 @@
 #ifndef PUSH_V_H
 # define PUSH_V_H
 
-# define SA
-# define SB
-# define PA
-# define PB
-# define RA
-# define RB
-# define RRA
-# define RRB
+# include "push_swap.h"
 
-# define WIDTH 2300
-# define HEIGHT 1000
-
-# define STACK_SIZE 15000
-
-typedef	struct	s_stack
-{
-	int			arr[STACK_SIZE];
-	int			index;
-}				t_stack;
+# define WIDTH 1000
+# define HEIGHT 700
 
 typedef	struct	s_vec2
 {
@@ -71,20 +56,13 @@ typedef	struct	s_visu
 
 void			sort_array(int t[STACK_SIZE], int count);
 
+void            draw_stacks(t_stack *a, t_stack *b, int *ope, int ope_count);
+
 void			render_stacks(t_visu *visu);
 void			draw_rect(t_visu *visu, t_rect *rect, int col);
 void			render(t_visu *visu);
 void			loop(t_visu *visu);
 int				on_key_hook(int key, void *data);
 void			clear_image(t_visu *visu);
-
-void			push_a(t_stack *a, t_stack *b);
-void			push_b(t_stack *a, t_stack *b);
-void			swap_a(t_stack *a, t_stack *b);
-void			swap_b(t_stack *a, t_stack *b);
-void			rot_a(t_stack *a, t_stack *b);
-void			rot_b(t_stack *a, t_stack *b);
-void			rot_r_a(t_stack *a, t_stack *b);
-void			rot_r_b(t_stack *a, t_stack *b);
 
 #endif

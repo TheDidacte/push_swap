@@ -10,15 +10,22 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_v
+NAME1 = push_swap
 
-SRCS = srcs/main.c			\
+NAME2 = checker
+
+SRCS = srcs/visual.c		\
 	   srcs/key_hook.c		\
 	   srcs/loop.c			\
 	   srcs/sort.c			\
-	   srcs/ope.c			\
+	   srcs/stack_util.c	\
+	   srcs/operations.c	\
+	   srcs/perform.c		\
 
 HDRS = includes/push_v.h	\
+	   includes/push_swap.h	\
+
+INCLUDES = -I./includes -I./libft -I./minilibx
 
 LIBFT = libft
 
@@ -28,16 +35,21 @@ CFLAGS = #-Wall -Wextra -Werror -O2 -flto
 
 CC = gcc
 
-all: $(NAME)
+all: $(NAME1) $(NAME2)
 
-$(NAME): $(OBJS) $(LIBFT)/libft.a
-	gcc $(CFLAGS) -o $(NAME) $(OBJS) -I./includes -I /usr/local/includes $(LIBFT)/libft.a -lpthread -L /usr/local/lib -lmlx -framework OpenGL -framework AppKit
+$(NAME1): $(OBJS) $(LIBFT)/libft.a
+	$(CC) $(INCLUDES) $(CFLAGS) -o $(NAME1) $(OBJS) srcs/push_swap.c $(LIBFT)/libft.a minilibx/libmlx_Linux.a -L/usr/x86_64-linux-gnu -lXext -lX11
+
+$(NAME2):
+	$(CC) $(INCLUDES) -o $(NAME2) $(OBJS) srcs/checker.c $(LIBFT)/libft.a minilibx/libmlx_Linux.a -L/usr/x86_64-linux-gnu -lXext -lX11
+
+# -framework OpenGL -framework AppKit
 
 $(LIBFT)/libft.a:
 	@make -C $(LIBFT)
 
 %.o: %.c $(HDRS)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(INCLUDES) $(CFLAGS) -c $< -o $@
 
 clean:
 	@make clean -C $(LIBFT)
@@ -45,6 +57,6 @@ clean:
 
 fclean: clean
 	@make fclean -C $(LIBFT)
-	rm -f $(NAME)
+	rm -f $(NAME1) $(NAME2)
 
 re: fclean all
