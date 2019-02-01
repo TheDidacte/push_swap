@@ -6,7 +6,7 @@
 /*   By: cpoirier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 13:36:36 by cpoirier          #+#    #+#             */
-/*   Updated: 2019/01/29 16:52:00 by cpoirier         ###   ########.fr       */
+/*   Updated: 2019/02/01 18:28:36 by cpoirier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void			render_stack(t_visu *visu, t_stack *a, int x, int y)
 		rect.width = a->arr[i] * visu->rect_width;
 		rect.x = x + WIDTH / 4 - rect.width / 2;
 		rect.y = y + visu->rect_height * (a->index - i - 1);
-		draw_rect(visu, &rect, 0xFFFFFF);
+		draw_rect(visu, &rect, get_color(visu, a, i, visu->ope[visu->frame]));
 		i++;
 	}
 }
@@ -52,17 +52,27 @@ void			render_stacks(t_visu *visu)
 	render(visu);
 }
 
-void			loop(t_visu *visu)
+int				loop(void *v)
 {
+	t_visu		*visu;
+
+	visu = (t_visu *)v;
 	if (!visu->pause)
 	{
 		if (visu->cooldown == visu->speed)
 		{
+			//printf("Cooldown: %d, frame: %d\n", visu->cooldown, visu->frame);
 			visu->cooldown = 0;
-			visu->frame += visu->frame < visu->ope_count ? 1 : 0;
-			render_stacks(visu);
+			if (visu->frame < visu->ope_count)
+			{
+				perform(visu, visu->ope[visu->frame]);
+				visu->frame++;
+				clear_image(visu);
+				render_stacks(visu);
+			}
 		}
 		else
 			visu->cooldown++;
 	}
+	return (0);
 }

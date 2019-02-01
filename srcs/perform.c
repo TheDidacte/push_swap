@@ -1,24 +1,29 @@
-#include "push_swap.h"
+#include "push_v.h"
 
-void            perform(t_stack *a, t_stack *b, int op)
+void            perform(t_visu *v, int op)
 {
 	if (op == SA || op == SS)
-		swap(a);
+		swap(v->a);
 	if (op == SB || op == SS)
-		swap(b);
+		swap(v->b);
 	if (op == PA || op == PB)
-		push(a, b, op);
+		push(v->a, v->b, op);
 	if (op == RA || op == RR)
-		rotate(a);
+		rotate(v->a);
 	if (op == RB || op == RR)
-		rotate(b);
+		rotate(v->b);
 	if (op == RRA || op == RRR)
-		rotate_r(a);
+		rotate_r(v->a);
 	if (op == RRB || op == RRR)
-		rotate_r(b);
+		rotate_r(v->b);
+
+	//print_stack(v->a);
+	//print_stack(v->b);
+	if (v->visual && !v->is_drawing)
+		add_to_ope(v, op);
 }
 
-void            perform_and_write(t_stack *a, t_stack *b, int op)
+void            perform_and_write(t_visu *v, int op)
 {
 	char    *s;
 
@@ -45,6 +50,6 @@ void            perform_and_write(t_stack *a, t_stack *b, int op)
 	else if (op == RRR)
 		s = "rrr";
 	printf("%s\n", s);
-	perform(a, b, op);
+	perform(v, op);
 }
 
