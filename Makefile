@@ -6,7 +6,7 @@
 #    By: cpoirier <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/07 17:53:10 by cpoirier          #+#    #+#              #
-#    Updated: 2019/02/01 16:59:23 by cpoirier         ###   ########.fr        #
+#    Updated: 2019/02/02 17:41:28 by cpoirier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,12 +38,12 @@ CC = gcc
 
 all: $(NAME1) $(NAME2)
 
-$(NAME1): $(OBJS) $(LIBFT)/libft.a
+$(NAME1): $(OBJS) $(LIBFT)/libft.a srcs/push_swap.c
 	$(CC) $(INCLUDES) $(CFLAGS) -o $(NAME1) $(OBJS) srcs/push_swap.c $(LIBFT)/libft.a -lmlx -framework OpenGL -framework AppKit
 	
 #minilibx/libmlx_Linux.a -L/usr/x86_64-linux-gnu -lXext -lX11
 
-$(NAME2):
+$(NAME2): $(OBJS) $(LIBFT)/libft.a srcs/checker.c
 	$(CC) $(INCLUDES) -o $(NAME2) $(OBJS) srcs/checker.c $(LIBFT)/libft.a -lmlx -framework OpenGL -framework AppKit
 
 #minilibx/libmlx_Linux.a -L/usr/x86_64-linux-gnu -lXext -lX11

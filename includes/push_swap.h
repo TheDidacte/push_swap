@@ -32,12 +32,14 @@ void            fill_stack(t_stack *a, int ac, char **av);
 void			perform_and_write(t_visu *b, int ope);
 void			perform(t_visu *v, int ope);
 int				is_n_sort(t_stack *s, int size, int rev);
-int				get_median(t_stack *s, int n);
+int				get_median(t_stack *s, int n, int rev);
 int				index_of(t_stack *s, int pivot_val);
 int				is_sort(t_stack *s);
 void			push(t_stack *a, t_stack *b, int op);
 void			swap(t_stack *a);
 void			rotate(t_stack *a);
 void			rotate_r(t_stack *a);
+int				get_reverse_ope(int op);
+void			clean_list(t_visu *v);
 
 #endif

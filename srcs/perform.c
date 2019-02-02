@@ -1,4 +1,5 @@
 #include "push_v.h"
+#include "libft.h"
 
 void            perform(t_visu *v, int op)
 {
@@ -19,7 +20,7 @@ void            perform(t_visu *v, int op)
 
 	//print_stack(v->a);
 	//print_stack(v->b);
-	if (v->visual && !v->is_drawing)
+	if (!v->is_drawing)
 		add_to_ope(v, op);
 }
 
@@ -49,7 +50,47 @@ void            perform_and_write(t_visu *v, int op)
 		s = "rrb";
 	else if (op == RRR)
 		s = "rrr";
-	printf("%s\n", s);
+	//printf("%s\n", s);
 	perform(v, op);
 }
 
+char		*get_string_ope(int op)
+{
+	char    *s;
+
+	if (op == SA)
+		s = "sa";
+	else if (op == SB)
+		s = "sb";
+	else if (op == SS)
+		s = "ss";
+	else if (op == PB)
+		s = "pb";
+	else if (op == PA)
+		s = "pa";
+	else if (op == RA)
+		s = "ra";
+	else if (op == RB)
+		s = "rb";
+	else if (op == RR)
+		s = "rr";
+	else if (op == RRA)
+		s = "rra";
+	else if (op == RRB)
+		s = "rrb";
+	else if (op == RRR)
+		s = "rrr";
+	return (s);
+}
+
+void		write_operations(t_visu *v)
+{
+	int		i;
+
+	i = 0;
+	while (i < v->ope_count)
+	{
+		ft_printf("%s\n", get_string_ope(v->ope[i]));
+		i++;
+	}
+}

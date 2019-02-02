@@ -6,7 +6,7 @@
 /*   By: cpoirier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 12:25:58 by cpoirier          #+#    #+#             */
-/*   Updated: 2019/02/01 19:12:12 by cpoirier         ###   ########.fr       */
+/*   Updated: 2019/02/02 16:39:08 by cpoirier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,9 @@ void			normalize_stack(t_stack *a)
 void			draw_stacks(t_visu *visu)
 {
 	
-	printf("\n\n");
-	for (int i = 0; i < visu->ope_count; i++)
-	{
-		printf("%d\n", visu->ope[i]);
-	}
-	printf("My ope_count: %d\n", visu->ope_count);
+	for (int i=0; i < visu->ope_count; i++)
+		printf("My ope: %d\n", visu->ope[i]);
+
 	if (!(visu->mlx = mlx_init()))
 		exit(1);
 	if (!(visu->win = mlx_new_window(visu->mlx, WIDTH, HEIGHT, "push_swap visualizer")))
@@ -91,7 +88,7 @@ void			draw_stacks(t_visu *visu)
 	visu->img_addr = mlx_get_data_addr(visu->img, &visu->bpp, &visu->s_l, &visu->endian);
 	visu->a = visu->initial_a;
 	visu->frame = 0;
-	visu->speed = 100;
+	visu->speed = 0;
 	visu->pause = 0;
 	visu->cooldown = 0;
 	visu->rect_height = (HEIGHT) / visu->a->index;

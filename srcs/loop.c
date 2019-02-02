@@ -6,7 +6,7 @@
 /*   By: cpoirier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 13:36:36 by cpoirier          #+#    #+#             */
-/*   Updated: 2019/02/01 18:28:36 by cpoirier         ###   ########.fr       */
+/*   Updated: 2019/02/02 16:40:41 by cpoirier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int				loop(void *v)
 			visu->cooldown = 0;
 			if (visu->frame < visu->ope_count)
 			{
+				printf("My frame: %d on %d\n", visu->frame, visu->ope_count);
 				perform(visu, visu->ope[visu->frame]);
 				visu->frame++;
 				clear_image(visu);
