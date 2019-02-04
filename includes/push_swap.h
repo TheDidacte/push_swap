@@ -41,5 +41,6 @@ void			rotate(t_stack *a);
 void			rotate_r(t_stack *a);
 int				get_reverse_ope(int op);
 void			clean_list(t_visu *v);
+void			write_operations(t_visu *v);
 
 #endif

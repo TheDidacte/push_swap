@@ -21,7 +21,7 @@ int             get_median(t_stack *a, int n, int rev)
 	while (++i < n)
 		cpy[i] = a->arr[a->index - 1 - i];
 	sort_array(cpy, n);
-	return (cpy[n / 2 + (rev && n % 2 == 0 ? 1 : 0) - (!rev && n % 2 == 0 ? 1 : 0)]);
+	return (cpy[n / 2]);// + (rev && n % 2 == 0 ? 1 : 0) - (!rev && n % 2 == 0 ? 1 : 0)]);
 }
 
 int             index_of(t_stack *a, int val)

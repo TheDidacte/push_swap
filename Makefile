@@ -39,12 +39,12 @@ CC = gcc
 all: $(NAME1) $(NAME2)
 
 $(NAME1): $(OBJS) $(LIBFT)/libft.a srcs/push_swap.c
-	$(CC) $(INCLUDES) $(CFLAGS) -o $(NAME1) $(OBJS) srcs/push_swap.c $(LIBFT)/libft.a -lmlx -framework OpenGL -framework AppKit
+	$(CC) $(INCLUDES) $(CFLAGS) -o $(NAME1) $(OBJS) srcs/push_swap.c $(LIBFT)/libft.a minilibx/libmlx_Linux.a -L/usr/x86_64-linux-gnu -lXext -lX11 #-lmlx -framework OpenGL -framework AppKit
 	
 #minilibx/libmlx_Linux.a -L/usr/x86_64-linux-gnu -lXext -lX11
 
 $(NAME2): $(OBJS) $(LIBFT)/libft.a srcs/checker.c
-	$(CC) $(INCLUDES) -o $(NAME2) $(OBJS) srcs/checker.c $(LIBFT)/libft.a -lmlx -framework OpenGL -framework AppKit
+	$(CC) $(INCLUDES) -o $(NAME2) $(OBJS) srcs/checker.c $(LIBFT)/libft.a minilibx/libmlx_Linux.a -L/usr/x86_64-linux-gnu -lXext -lX11 #-lmlx -framework OpenGL -framework AppKit
 
 #minilibx/libmlx_Linux.a -L/usr/x86_64-linux-gnu -lXext -lX11
 

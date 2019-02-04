@@ -88,7 +88,7 @@ void			draw_stacks(t_visu *visu)
 	visu->img_addr = mlx_get_data_addr(visu->img, &visu->bpp, &visu->s_l, &visu->endian);
 	visu->a = visu->initial_a;
 	visu->frame = 0;
-	visu->speed = 0;
+	visu->speed = 10;
 	visu->pause = 0;
 	visu->cooldown = 0;
 	visu->rect_height = (HEIGHT) / visu->a->index;

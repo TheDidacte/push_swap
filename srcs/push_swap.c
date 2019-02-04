@@ -162,7 +162,6 @@ void		sort(t_visu *v, int size, int rev)
 		}
 		i++;
 	}
-	i = -1;
 	//printf("\nEND OF DISPATCHING\n");
 	//printf("Pivot index: %d\n", pivot);
 	
@@ -170,6 +169,7 @@ void		sort(t_visu *v, int size, int rev)
 
 	int dir = pivot >= s->index / 2 ? RA : RRA;
 
+/*
 	if (s->arr[s->index - 1] == pivot_val)//pivot = s->index - 1)
     {
 		perform_and_write(v, PB - rev);
@@ -192,17 +192,26 @@ void		sort(t_visu *v, int size, int rev)
 		
 		}
 	}
+*/
+
+	if (size - to_do != s->index)
+	{
+		i = -1;
+		while (++i < size - to_do)
+			perform_and_write(v, RRA + rev);
+	}
+
 	//printf("\nEND OF REVERSE; BEGINNING REC\n");
 	if (!rev)
-		sort(v, rev ? to_do : size - to_do - 1, 0);
+		sort(v, rev ? to_do : size - to_do, 0);
 	else
-		sort(v, rev ? size - to_do - 1 : to_do, REV);
+		sort(v, rev ? size - to_do : to_do, REV);
 	//printf("okokokokokokokok %d\n", rev);
-	perform_and_write(v, PA + rev);
+	//perform_and_write(v, PA + rev);
 	if (!rev)
-		sort(v, rev ? size - to_do - 1 : to_do, REV);
+		sort(v, rev ? size - to_do : to_do, REV);
 	else
-		sort(v, rev ? to_do : size - to_do - 1, 0);
+		sort(v, rev ? to_do : size - to_do, 0);
 	i = -1;
 	while (++i < to_do)
 		perform_and_write(v, PA + rev);
@@ -262,7 +271,7 @@ int		main(int ac, char **av)
 	
 	
 	write_operations(&visu);
-	//printf("Is sort: %d, %d\n", is_sort(&a), visu.visual);
+	printf("Is sort: %d, %d\n", is_sort(&a), visu.visual);
 	//print_stack(&a);
 	//print_stack(&b);
 	visu.is_drawing = 1;
