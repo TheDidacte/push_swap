@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   perform.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cpoirier <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/02/05 15:51:22 by cpoirier          #+#    #+#             */
+/*   Updated: 2019/02/05 15:51:23 by cpoirier         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_v.h"
 #include "libft.h"
 
-void            perform(t_visu *v, int op)
+void			perform(t_visu *v, int op)
 {
 	if (op == SA || op == SS)
 		swap(v->a);
@@ -17,16 +29,13 @@ void            perform(t_visu *v, int op)
 		rotate_r(v->a);
 	if (op == RRB || op == RRR)
 		rotate_r(v->b);
-
-	//print_stack(v->a);
-	//print_stack(v->b);
 	if (!v->is_drawing)
 		add_to_ope(v, op);
 }
 
-void            perform_and_write(t_visu *v, int op)
+void			perform_and_write(t_visu *v, int op)
 {
-	char    *s;
+	char	*s;
 
 	if (op == SA)
 		s = "sa";
@@ -50,13 +59,12 @@ void            perform_and_write(t_visu *v, int op)
 		s = "rrb";
 	else if (op == RRR)
 		s = "rrr";
-	//printf("%s\n", s);
 	perform(v, op);
 }
 
-char		*get_string_ope(int op)
+char			*get_string_ope(int op)
 {
-	char    *s;
+	char	*s;
 
 	if (op == SA)
 		s = "sa";
@@ -83,7 +91,7 @@ char		*get_string_ope(int op)
 	return (s);
 }
 
-void		write_operations(t_visu *v)
+void			write_operations(t_visu *v)
 {
 	int		i;
 

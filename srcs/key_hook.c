@@ -6,7 +6,7 @@
 /*   By: cpoirier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 14:31:28 by cpoirier          #+#    #+#             */
-/*   Updated: 2019/02/01 18:14:34 by cpoirier         ###   ########.fr       */
+/*   Updated: 2019/02/05 15:48:14 by cpoirier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,37 +32,20 @@ int			on_key_hook(int key, void *v)
 
 	visu = (t_visu *)v;
 	clear_image(visu);
-	if (key == 123) //Left
+	if (key == 123 && visu->frame)
 	{
-		if (visu->frame)
-		{
-			visu->frame--;
-			perform(visu, get_reverse_ope(visu->ope[visu->frame]));
-			clear_image(visu);
-			render_stacks(visu);
-		}
+		visu->frame--;
+		perform(visu, get_reverse_ope(visu->ope[visu->frame]));
 	}
-	else if (key == 124) //Right
+	else if (key == 124 && visu->frame < visu->ope_count)
 	{
-		if (visu->frame < visu->ope_count)
-		{
-			perform(visu, visu->ope[visu->frame]);
-			visu->frame++;
-			clear_image(visu);
-			render_stacks(visu);
-		}
+		perform(visu, visu->ope[visu->frame]);
+		visu->frame++;
 	}
-	else if (key == 49) //Space
+	else if (key == 49)
 		visu->pause = !visu->pause;
-	else if (key == 258)
-		;//rot_a(visu->a, visu->b);
-	else if (key == 125)
-		;//rot_b(visu->a, visu->b);
-	else if (key == 126)
-		;//rot_r_b(visu->a, visu->b);
-	else if (key == 269)
-		;//rot_r_a(visu->a, visu->b);
-	printf("Key: %d\n",key);
+	else if (key == 53)
+		free_and_exit(v);
 	render_stacks(visu);
 	return (0);
 }

@@ -6,16 +6,16 @@
 /*   By: cpoirier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 13:28:43 by cpoirier          #+#    #+#             */
-/*   Updated: 2019/01/29 15:44:31 by cpoirier         ###   ########.fr       */
+/*   Updated: 2019/02/05 17:08:14 by cpoirier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_v.h"
 
-int         ft_partition_table(int tab[STACK_SIZE], int first, int last)
+int			ft_partition_table(int *tab, int first, int last)
 {
-	int     i;
-	int     j;
+	int		i;
+	int		j;
 	int		mem;
 
 	j = first;
@@ -37,9 +37,9 @@ int         ft_partition_table(int tab[STACK_SIZE], int first, int last)
 	return (j);
 }
 
-void        ft_sort_table_aux(int tab[STACK_SIZE], int first, int last)
+void		ft_sort_table_aux(int *tab, int first, int last)
 {
-	int pivot;
+	int		pivot;
 
 	if (first >= last)
 		return ;
@@ -48,7 +48,7 @@ void        ft_sort_table_aux(int tab[STACK_SIZE], int first, int last)
 	ft_sort_table_aux(tab, pivot + 1, last);
 }
 
-void        sort_array(int t[STACK_SIZE], int count)
+void		sort_array(int *t, int count)
 {
 	ft_sort_table_aux(t, 0, count - 1);
 }

@@ -6,7 +6,7 @@
 /*   By: cpoirier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 12:27:55 by cpoirier          #+#    #+#             */
-/*   Updated: 2019/02/01 18:28:56 by cpoirier         ###   ########.fr       */
+/*   Updated: 2019/02/05 17:49:35 by cpoirier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # define WIDTH 2000
 # define HEIGHT 1000
 
-typedef	struct	s_stack	t_stack;
+typedef	struct s_stack	t_stack;
 
 typedef	struct	s_vec2
 {
@@ -47,6 +47,7 @@ typedef	struct	s_visu
 	t_stack		*b;
 	int			*ope;
 	int			ope_count;
+	long long	ope_size;
 	int			frame;
 	int			cooldown;
 	int			rect_height;
@@ -55,13 +56,15 @@ typedef	struct	s_visu
 	int			speed;
 	int			pause;
 	int			visual;
+	int			size;
 	int			is_drawing;
 	t_stack		*initial_a;
+	int			alt_sort;
 }				t_visu;
 
-void			sort_array(int t[STACK_SIZE], int count);
+void			sort_array(int *t, int count);
 
-void            draw_stacks(t_visu *visu);
+void			draw_stacks(t_visu *visu);
 
 void			build_visu(t_visu *visu);
 void			add_to_ope(t_visu *visu, int ope);
@@ -73,5 +76,6 @@ int				loop(void *v);
 int				on_key_hook(int key, void *data);
 void			clear_image(t_visu *visu);
 int				get_color(t_visu *v, t_stack *s, int k, int op);
+void			free_and_exit(t_visu *v);
 
 #endif

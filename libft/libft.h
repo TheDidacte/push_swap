@@ -6,7 +6,7 @@
 /*   By: awoimbee <awoimbee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/23 20:34:49 by awoimbee          #+#    #+#             */
-/*   Updated: 2019/01/30 17:29:50 by cpoirier         ###   ########.fr       */
+/*   Updated: 2019/02/05 17:14:08 by cpoirier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 # include <string.h>
 
 # define GNL_BUFF_SIZE 300
-
 
 typedef struct	s_list
 {

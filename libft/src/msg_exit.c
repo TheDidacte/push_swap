@@ -6,7 +6,7 @@
 /*   By: awoimbee <awoimbee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/22 14:13:17 by awoimbee          #+#    #+#             */
-/*   Updated: 2019/01/28 07:10:05 by awoimbee         ###   ########.fr       */
+/*   Updated: 2019/02/05 12:51:42 by cpoirier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,5 @@ void	msg_exit(const char *msg, const void *data)
 		}
 		write(2, "\n", 1);
 	}
-	write(1, "error\n", 6);
 	exit(EXIT_FAILURE);
 }

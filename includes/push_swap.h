@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cpoirier <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/02/05 17:13:25 by cpoirier          #+#    #+#             */
+/*   Updated: 2019/02/05 17:48:45 by cpoirier         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# define STACK_SIZE 5000
-# define OPE_SIZE 10000
+# define STACK_SIZE 300000
+# define OPE_SIZE 300000
 
 # include "push_v.h"
 
@@ -22,13 +34,16 @@
 
 typedef struct	s_stack
 {
-	int	index;
-	int	arr[STACK_SIZE];
-}		t_stack;
+	int			index;
+	int			*arr;
+	int			arr_size;
+}				t_stack;
 
-typedef	struct	s_visu	t_visu;
+typedef	struct s_visu	t_visu;
 
-void            fill_stack(t_stack *a, int ac, char **av);
+void			init_stack(t_stack *a);
+void			copy_stack(t_stack *s, t_stack *d);
+void			fill_stack(t_stack *a, int ac, char **av, int split);
 void			perform_and_write(t_visu *b, int ope);
 void			perform(t_visu *v, int ope);
 int				is_n_sort(t_stack *s, int size, int rev);
@@ -42,5 +57,11 @@ void			rotate_r(t_stack *a);
 int				get_reverse_ope(int op);
 void			clean_list(t_visu *v);
 void			write_operations(t_visu *v);
+int				is_arg_valid(char *s, t_stack *a, int n);
+void			fast_2_sort(t_visu *v, int rev);
+void			fast_3_sort_empty(t_visu *v, int rev);
+void			fast_3_sort(t_visu *v, int rev);
+void			sort(t_visu *v, int size, int rev);
+void			usage(void);
 
 #endif
